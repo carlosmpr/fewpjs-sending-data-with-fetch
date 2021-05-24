@@ -28,7 +28,7 @@ describe( "submitData()", () => {
         reqBody = requestBody
         headers = this.req.headers
         return {
-          id: rando,
+          id: 5,
           ...requestBody
         }
       } );
@@ -58,18 +58,18 @@ describe( "submitData()", () => {
       .post( '/users' )
       .reply( 201, function ( uri, requestBody ) {
         return {
-          id: rando,
+          id: 5,
           ...requestBody
         }
       } );
 
     let name = "Sam"
     let email = "sam@sam.com"
-
+      
     await submitData( name, email )
 
     expect( document.body.innerHTML )
-      .to.include( rando )
+      .to.include( 5 )
   } );
 
   it( "handles a failed POST request using catch, appends the error message to the DOM", async function () {
